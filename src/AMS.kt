@@ -1,12 +1,17 @@
 import java.util.*
 
 fun main(args: Array<String>) {
-    var fortune: String
-    for (i in 1..10) {
-        fortune = getFortuneCookie(getBirthday())
-        println("\nYour fortune is: $fortune")
-        if (fortune.contains("Take it easy")) break
-    }
+//    var fortune: String
+//    for (i in 1..10) {
+//        fortune = getFortuneCookie(getBirthday())
+//        println("\nYour fortune is: $fortune")
+//        if (fortune.contains("Take it easy")) break
+//    }
+    println(fitMoreFish(10.0, listOf(3,3,3)))
+    println(fitMoreFish(8.0, listOf(2,2,2), hasDecorations = false))
+    println(fitMoreFish(9.0, listOf(1,1,3),3))
+    println(fitMoreFish(10.0, listOf(),7,true))
+
 }
 
 fun getBirthday() : Int {
@@ -37,4 +42,10 @@ fun getFortuneCookie(birthday: Int) : String {
     }
     return fortunes[index]
 }
+
+fun fitMoreFish(tankSize: Double, currentFish : List<Int>, fishSize: Int = 2, hasDecorations :Boolean = true):Boolean {
+    val actualTankSize = if (hasDecorations) 0.8*tankSize else tankSize
+    val totalFishSize=currentFish.sum() + fishSize
+    return (actualTankSize-totalFishSize>=0)
+    }
 
