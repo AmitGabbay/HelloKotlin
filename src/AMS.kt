@@ -1,17 +1,17 @@
 import java.util.*
 
 fun main(args: Array<String>) {
-    //val hour : Int  = args[0].toInt()
-    //println("${if(args[0].toDouble()<12) "Good Morning, Kotlin" else "Good Night"}")
-    var fortune : String?
-    var runs = 0
-    do {
-        fortune =getFortuneCookie()
-        runs++
-        println("Your Fortune is $fortune.")
+    var fortune: String
+    for (i in 1..10) {
+        fortune = getFortuneCookie(getBirthday())
+        println("\nYour fortune is: $fortune")
+        if (fortune.contains("Take it easy")) break
+    }
+}
 
-    } while (fortune!="d" && runs < 10)
-
+fun getBirthday() : Int {
+    print("\nEnter your birthday: ")
+   return readLine()?.toIntOrNull() ?: 1
 }
 
 fun dayOfWeek() {
@@ -20,12 +20,21 @@ fun dayOfWeek() {
         else -> println("weekend")
     }
 }
-    fun getFortuneCookie() : String  {
-        val greetings = listOf("a", "b", "c", "d", "e")
-        print("Enter your birthday: ")
-        //val a = readLine()
-        var birthday  = readLine()?.toIntOrNull() ?: 1
-        birthday = birthday.rem(greetings.count())
-        return greetings[birthday]
+fun getFortuneCookie(birthday: Int) : String {
+    val fortunes = listOf( "You will have a great day!",
+        "Things will go well for you today.",
+        "Enjoy a wonderful day of success.",
+        "Be humble and all will turn out well.",
+        "Today is a good day for exercising restraint.",
+        "Take it easy and enjoy life!",
+        "Treasure your friends, because they are your greatest fortune.")
+
+    print("\nEnter your birthday: ")
+    val index = when(birthday){
+        28 or 31-> 4
+        in 1..7 -> 2
+        else -> birthday.rem(fortunes.size)
     }
+    return fortunes[index]
+}
 
