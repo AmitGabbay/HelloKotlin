@@ -2,7 +2,17 @@ package Classes.Spices
 
 fun main(args: Array<String>) {
 val curry = Curry("A", "Mild")
-    println(curry.color)
+//    println(curry.color)
+    val curry2 = SpiceContainer(curry)
+    //val (spice, label) = curry2
+    println(curry)
+    println(curry2)
+    println(curry2.label)
+}
+
+data class SpiceContainer(val spice: Spice) {
+    val label: String = spice.name
+    //constructor(spice: Spice, label: String = spice.name) : this(spice)
 }
 
 interface Grinder {
