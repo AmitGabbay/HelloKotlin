@@ -1,5 +1,6 @@
 package Classes
 
+import Classes.Spices.Curry
 import Classes.Spices.Spice
 
 fun main(args: Array<String>){
@@ -16,6 +17,6 @@ fun main(args: Array<String>){
 //
 //for (sp : Spice in list2){
 //    println(sp.name)
-//}
+
 }
 
